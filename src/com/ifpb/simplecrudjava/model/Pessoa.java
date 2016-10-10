@@ -10,14 +10,14 @@ import java.util.Objects;
 public class Pessoa {
     private String cpf;
     private String nome;
-    private char sexo;
+    private String sexo;
     private int idade;
     
     public Pessoa(){
         
     }
     
-    public Pessoa(String cpf, String nome, char sexo, int idade){
+    public Pessoa(String cpf, String nome, String sexo, int idade){
         this.cpf = cpf;
         this.nome = nome;
         this.sexo = sexo;
@@ -40,11 +40,11 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
@@ -61,7 +61,7 @@ public class Pessoa {
         int hash = 7;
         hash = 13 * hash + Objects.hashCode(this.cpf);
         hash = 13 * hash + Objects.hashCode(this.nome);
-        hash = 13 * hash + this.sexo;
+        hash = 13 * hash + Objects.hashCode(this.sexo);
         hash = 13 * hash + this.idade;
         return hash;
     }
@@ -81,7 +81,7 @@ public class Pessoa {
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
-        if (this.sexo != other.sexo) {
+        if (!Objects.equals(this.sexo, other.sexo)) {
             return false;
         }
         if (this.idade != other.idade) {
